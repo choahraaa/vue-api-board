@@ -38,6 +38,9 @@ export default {
         content: this.content
       })
           .then((response) => {
+            alert('저장되었습니다.');
+            this.title = '';
+            this.content = '';
             console.log('response', response);
           });
     }
