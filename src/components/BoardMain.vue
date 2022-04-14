@@ -33,8 +33,7 @@ export default {
   },
   methods: {
     insert() {
-      console.log('111')
-      axios.post('//localhost:9090/api/api-board', {
+      axios.post('/api/api-board', {
         title: this.title,
         content: this.content
       })
