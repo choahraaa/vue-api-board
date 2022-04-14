@@ -16,7 +16,7 @@
       </tr>
     </table>
     <button @click="insert">저장</button>
-    <button>취소</button>
+    <button @click="boardCancle">취소</button>
   </div>
 </template>
 
@@ -43,6 +43,10 @@ export default {
             this.content = '';
             console.log('response', response);
           });
+    },
+    boardCancle() {
+      this.title = '';
+      this.content = '';
     }
   }
 }
