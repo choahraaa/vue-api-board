@@ -24,7 +24,7 @@
 import axios from "axios";
 
 export default {
-  name: "boardMain",
+  name: "BoardInsert",
   data() {
     return {
       title: '',
