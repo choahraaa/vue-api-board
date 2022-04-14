@@ -4,21 +4,45 @@
     <table>
       <tr>
         <th>제목 :</th>
-        <input type="text" placeholder="제목을 입력해주세요.">
+        <td>
+          <input type="text" v-model="title" placeholder="제목을 입력해주세요.">
+        </td>
       </tr>
       <tr>
         <th>본문 :</th>
-        <textarea placeholder="본문을 입력해주세요."></textarea>
+        <td>
+          <textarea v-model="content" placeholder="본문을 입력해주세요."></textarea>
+        </td>
       </tr>
     </table>
-    <button>저장</button>
+    <button @click="insert">저장</button>
     <button>취소</button>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  name: "boardMain"
+  name: "boardMain",
+  data() {
+    return {
+      title: '',
+      content: ''
+    }
+  },
+  methods: {
+    insert() {
+      console.log('111')
+      axios.post('//localhost:9090/api/api-board', {
+        title: this.title,
+        content: this.content
+      })
+          .then((response) => {
+            console.log('response', response);
+          });
+    }
+  }
 }
 </script>
 
