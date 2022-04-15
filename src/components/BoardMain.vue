@@ -1,18 +1,18 @@
 <template>
   <div>
-    <h2>게시글 목록</h2>
+    <h2>게시판 목록</h2>
     <table>
       <tr>
         <th>제목</th>
         <th>본문</th>
       </tr>
       <tr v-for="board in boardList" :key="board">
-        <td>{{board.title}}</td>
-        <td>{{board.content}}</td>
+        <td>{{ board.title }}</td>
+        <td>{{ board.content }}</td>
       </tr>
     </table>
     <button>글쓰기</button>
-    <button @click="search">조회</button>
+    <!--    <button @click="search">조회</button>-->
   </div>
 </template>
 
@@ -20,6 +20,12 @@
 import axios from "axios";
 
 export default {
+  created() {
+    axios.get('/api/api-board')
+        .then((response) => {
+          this.boardList = response.data
+        })
+  },
   name: "BoardMain",
   data() {
     return {
@@ -27,12 +33,12 @@ export default {
     }
   },
   methods: {
-    search() {
-      axios.get('/api/api-board')
-      .then((response) => {
-        this.boardList = response.data
-      })
-    }
+    // search() {
+    //   axios.get('/api/api-board')
+    //       .then((response) => {
+    //         this.boardList = response.data
+    //       })
+    // }
   }
 }
 </script>
