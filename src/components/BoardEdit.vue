@@ -22,6 +22,10 @@
 
 <script>
 export default {
+  created() {
+    const id = this.$route.params.id; //파라미터 id 가져오기
+    this.$store.dispatch('fetch', id); // 파라미터로 id 넘기기
+  },
   name: "BoardEdit",
   methods: {
 
