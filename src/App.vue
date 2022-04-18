@@ -1,17 +1,12 @@
 <template>
   <div id="app">
-    <board-main />
+      <router-view />
   </div>
 </template>
 
 <script>
-import BoardMain from "@/components/BoardMain";
-
 export default {
-  name: 'App',
-  components: {
-    BoardMain
-  }
+  name: 'App'
 }
 </script>
 
