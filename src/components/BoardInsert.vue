@@ -16,7 +16,7 @@
       </tr>
     </table>
     <button @click="insert">저장</button>
-    <button @click="boardCancle">취소</button>
+    <button @click="boardCancel">취소</button>
   </div>
 </template>
 
@@ -44,7 +44,7 @@ export default {
             this.$router.push('/');
           });
     },
-    boardCancle() {
+    boardCancel() {
       this.title = '';
       this.content = '';
       this.$router.push('/');
