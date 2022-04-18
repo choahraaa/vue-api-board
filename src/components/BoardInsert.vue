@@ -47,6 +47,7 @@ export default {
     boardCancle() {
       this.title = '';
       this.content = '';
+      this.$router.push('/');
     }
   }
 }
