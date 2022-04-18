@@ -11,11 +11,11 @@
     <tr>
       <th>본문 :</th>
       <td>
-        <textarea  v-model="this.$store.state.board.content" placeholder="본문을 입력해주세요."></textarea>
+        <textarea v-model="this.$store.state.board.content" placeholder="본문을 입력해주세요."></textarea>
       </td>
     </tr>
   </table>
-  <button>수정</button>
+  <button @click="updateBoard">수정</button>
   <button>취소</button>
 </div>
 </template>
@@ -28,7 +28,11 @@ export default {
   },
   name: "BoardEdit",
   methods: {
-
+    updateBoard() {
+      const id = this.$route.params.id;
+      console.log('id' , id)
+      this.$store.dispatch('update', id);
+    }
   }
 }
 </script>
