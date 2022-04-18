@@ -4,7 +4,10 @@ import axios from "axios";
 export default createStore({
   state: {
     boardList: [],
-    board: {}
+    board: {
+      title: '',
+      content:''
+    }
   },
   getters: {
   },
@@ -14,7 +17,7 @@ export default createStore({
     },
     setBoard(state, board) {
       state.board = board
-    }
+    },
   },
   actions: {
     search({commit}) {
@@ -27,6 +30,16 @@ export default createStore({
       axios.get(`/api/api-board/${id}`)
           .then((response) => {
             commit('setBoard', response.data);
+          })
+    },
+    update(context, id) {
+      axios.put(`/api/api-board/${id}`
+          , {
+            title : this.state.board.title,
+            content : this.state.board.content
+          })
+          .then(() => {
+            alert('수정되었습니다.');
           })
     }
   },
