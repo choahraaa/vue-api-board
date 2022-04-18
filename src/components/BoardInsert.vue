@@ -37,11 +37,11 @@ export default {
         title: this.title,
         content: this.content
       })
-          .then((response) => {
+          .then(() => {
             alert('저장되었습니다.');
             this.title = '';
             this.content = '';
-            console.log('response', response);
+            this.$router.push('/');
           });
     },
     boardCancle() {
