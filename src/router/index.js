@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import BoardInsert from "@/components/BoardInsert";
 import BoardMain from "@/components/BoardMain";
+import BoardEdit from "@/components/BoardEdit";
 
 const routes = [
     {
@@ -13,6 +14,11 @@ const routes = [
         name: 'BoardInsert',
         component: BoardInsert
     },
+    {
+        path:'/edit/:id',
+        name: 'BoardEdit',
+        component: BoardEdit
+    }
 ];
 
 const router = createRouter({

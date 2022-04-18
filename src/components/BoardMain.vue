@@ -7,8 +7,10 @@
         <th>본문</th>
       </tr>
       <tr v-for="board in this.$store.state.boardList" :key="board">
-        <td>{{ board.title }}</td>
-        <td @click="editBoard">{{ board.content }}</td>
+        <td @click="boardEdit(board.id)">
+          {{ board.title }}
+        </td>
+        <td>{{ board.content }}</td>
       </tr>
     </table>
     <button @click="boardInsert">글쓰기</button>
@@ -29,11 +31,14 @@ export default {
     //         this.boardList = response.data
     //       })
     // },
+    boardEdit(id) {
+      this.$router.push({
+        name: 'BoardEdit',
+        params: {id}
+      })
+    },
     boardInsert() {
       this.$router.push('/insert')
-    },
-    editBoard() {
-
     }
   }
 }
