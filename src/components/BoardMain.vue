@@ -11,7 +11,7 @@
         <td>{{ board.content }}</td>
       </tr>
     </table>
-    <button>글쓰기</button>
+    <button @click="boardInsert">글쓰기</button>
     <!--    <button @click="search">조회</button>-->
   </div>
 </template>
@@ -38,7 +38,10 @@ export default {
     //       .then((response) => {
     //         this.boardList = response.data
     //       })
-    // }
+    // },
+    boardInsert() {
+      this.$router.push('/insert')
+    }
   }
 }
 </script>
