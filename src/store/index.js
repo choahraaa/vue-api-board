@@ -13,10 +13,10 @@ export default createStore({
     }
   },
   actions: {
-    search(context) {
+    search({commit}) {
       axios.get('/api/api-board')
           .then((response) => {
-            context.commit('set_boardList', response.data);
+            commit('set_boardList', response.data);
           })
     }
   },
