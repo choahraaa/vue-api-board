@@ -6,9 +6,9 @@
         <th>제목</th>
         <th>본문</th>
       </tr>
-      <tr v-for="board in boardList" :key="board">
+      <tr v-for="board in this.$store.state.boardList" :key="board">
         <td>{{ board.title }}</td>
-        <td>{{ board.content }}</td>
+        <td @click="editBoard">{{ board.content }}</td>
       </tr>
     </table>
     <button @click="boardInsert">글쓰기</button>
@@ -17,21 +17,11 @@
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   created() {
-    axios.get('/api/api-board')
-        .then((response) => {
-          this.boardList = response.data
-        })
+    this.$store.dispatch('search');
   },
   name: "BoardMain",
-  data() {
-    return {
-      boardList: []
-    }
-  },
   methods: {
     // search() {
     //   axios.get('/api/api-board')
@@ -41,6 +31,9 @@ export default {
     // },
     boardInsert() {
       this.$router.push('/insert')
+    },
+    editBoard() {
+
     }
   }
 }
