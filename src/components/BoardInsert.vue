@@ -24,12 +24,6 @@
 
 export default {
   name: "BoardInsert",
-  data() {
-    return {
-      title: '',
-      content: ''
-    }
-  },
   methods: {
     insert() {
       this.$store.dispatch('insert')
