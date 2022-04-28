@@ -14,7 +14,9 @@
       </tr>
     </table>
     <button @click="boardInsert">글쓰기</button>
-    <!--    <button @click="search">조회</button>-->
+    <br>
+    <input type="text" v-model="title">
+    <button @click="search">검색</button>
   </div>
 </template>
 
@@ -24,13 +26,15 @@ export default {
     this.$store.dispatch('search');
   },
   name: "BoardMain",
+  data() {
+    return {
+      title: ''
+    }
+  },
   methods: {
-    // search() {
-    //   axios.get('/api/api-board')
-    //       .then((response) => {
-    //         this.boardList = response.data
-    //       })
-    // },
+    search() {
+      this.$store.dispatch('search', this.title);
+    },
     boardEdit(id) {
       this.$router.push({
         name: 'BoardEdit',
