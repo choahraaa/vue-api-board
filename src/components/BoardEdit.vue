@@ -16,6 +16,7 @@
     </tr>
   </table>
   <button @click="updateBoard">수정</button>
+  <button @click="deleteBoard">삭제</button>
   <button>취소</button>
 </div>
 </template>
@@ -32,6 +33,10 @@ export default {
       const id = this.$route.params.id;
       console.log('id' , id)
       this.$store.dispatch('update', id);
+    },
+    deleteBoard() {
+      const id = this.$route.params.id;
+      this.$store.dispatch('delete', id);
     }
   }
 }

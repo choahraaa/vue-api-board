@@ -55,6 +55,15 @@ export default createStore({
                   router.push('/');
               });
       },
+
+      delete(context, id) {
+        axios.delete(`/api/api-board/${id}`)
+            .then(() => {
+                alert('삭제되었습니다.');
+                router.push('/');
+        });
+
+      }
   },
   modules: {
   }
