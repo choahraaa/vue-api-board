@@ -15,7 +15,12 @@
     </table>
     <button @click="boardInsert">글쓰기</button>
     <br>
-    <input type="text" v-model="title">
+    <select v-model="board.type">
+      <option value="">전체</option>
+      <option value="title">제목</option>
+      <option value="content">내용</option>
+    </select>
+    <input type="text" v-model="board.keyword">
     <button @click="search">검색</button>
   </div>
 </template>
@@ -28,12 +33,15 @@ export default {
   name: "BoardMain",
   data() {
     return {
-      title: ''
+      board: {
+        type: '',
+        keyword: ''
+      }
     }
   },
   methods: {
     search() {
-      this.$store.dispatch('search', this.title);
+      this.$store.dispatch('search', this.board);
     },
     boardEdit(id) {
       this.$router.push({
