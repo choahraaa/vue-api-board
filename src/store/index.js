@@ -22,8 +22,9 @@ export default createStore({
         },
     },
     actions: {
-        search({commit}, title) {
-            axios.get('/api/api-board',{params: {title}})
+        search({commit}, board) {
+            console.log(board)
+            axios.get('/api/api-board',{params: board})
                 .then((response) => {
                     commit('setBoardList', response.data);
                 })
