@@ -13,6 +13,12 @@
         <td>{{ board.content }}</td>
       </tr>
     </table>
+    <a v-if="this.$store.state.paging.pagingStart > 1" @click="movePage(this.$store.getters.prevPaging)">이전</a>
+    <a v-for="(page, index) in this.$store.state.paging.pageSize" :key="page" @click="movePage(this.$store.state.paging.pagingStart + index)">
+      {{this.$store.state.paging.pagingStart + index}}
+    </a>
+    <a v-if="this.$store.state.paging.pagingStart < this.$store.state.paging.lastPaging" @click="movePage(this.$store.getters.nextPaging)">다음</a>
+    <br>
     <button @click="boardInsert">글쓰기</button>
     <br>
     <select v-model="board.type">
@@ -28,14 +34,17 @@
 <script>
 export default {
   created() {
-    this.$store.dispatch('search');
+    this.$store.dispatch('search', this.board);
   },
   name: "BoardMain",
   data() {
     return {
       board: {
         type: '',
-        keyword: ''
+        keyword: '',
+        paging: {
+          page: '1'
+        }
       }
     }
   },
@@ -51,6 +60,11 @@ export default {
     },
     boardInsert() {
       this.$router.push('/insert')
+    },
+    movePage(page) {
+      this.board.paging.page = page;
+      console.log(this.board)
+      this.$store.dispatch('search', this.board);
     }
   }
 }

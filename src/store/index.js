@@ -9,10 +9,21 @@ export default createStore({
             board: {
                 title: '',
                 content: ''
-            }
+            },
+            paging: {}
         }
     },
-    getters: {},
+    getters: {
+        startPage(state) {
+            return state.paging.startPage;
+        },
+        nextPaging(state) {
+            return state.paging.pagingStart + state.paging.pageSize;
+        },
+        prevPaging(state) {
+            return state.paging.pagingStart - state.paging.pageSize;
+        }
+    },
     mutations: {
         setBoardList(state, boardList) {
             state.boardList = boardList
@@ -20,13 +31,39 @@ export default createStore({
         setBoard(state, board) {
             state.board = board
         },
+        setPaging(state, paging) {
+            state.paging = paging
+        }
     },
     actions: {
         search({commit}, board) {
-            console.log(board)
-            axios.get('/api/api-board',{params: board})
+            let params = Object.assign({}, board);
+
+            for (var i = 0; i < Object.keys(params).length; i++) {
+                var key = Object.keys(params)[i];
+                var data = params[key];
+                if (data instanceof Object) {
+                    for (var j = 0; j < Object.keys(params[key]).length; j++) {
+                        params[key + '.' + Object.keys(params[key])[j]] = params[key][Object.keys(params[key])[j]]
+                    }
+                    params[key] = null
+                }
+            }
+
+
+            // if (params.paging) {
+            //     for (var i = 0; i < Object.keys(params.paging).length; i++) {
+            //         params['paging.' + Object.keys(params.paging)[i]] = params.paging[Object.keys(params.paging)[i]]
+            //     }
+            //     params.paging = null
+            // }
+
+            axios.get('/api/api-board', {params})
                 .then((response) => {
-                    commit('setBoardList', response.data);
+                    commit('setBoardList', response.data.search);
+                    commit('setPaging', response.data.data.paging);
+                    console.log(response.data.data.paging.pagingStart);
+                    console.log(response.data.data.paging.lastPaging);
                 })
         },
         fetch({commit}, id) {
