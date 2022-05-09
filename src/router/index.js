@@ -2,10 +2,16 @@ import { createRouter, createWebHistory } from 'vue-router'
 import BoardInsert from "@/components/BoardInsert";
 import BoardMain from "@/components/BoardMain";
 import BoardEdit from "@/components/BoardEdit";
+import LoginPage from "@/components/LoginPage";
 
 const routes = [
     {
         path: '/',
+        name: 'LoginPage',
+        component: LoginPage
+    },
+    {
+        path:'/main',
         name: 'BoardMain',
         component: BoardMain
     },
