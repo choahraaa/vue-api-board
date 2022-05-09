@@ -20,6 +20,8 @@
       </td>
     </tr>
   </table>
+  <button>확인</button>
+  <button>취소</button>
 </div>
 </template>
 
