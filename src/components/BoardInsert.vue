@@ -31,7 +31,7 @@ export default {
     boardCancel() {
       this.title = '';
       this.content = '';
-      this.$router.push('/');
+      this.$router.push('/main');
     }
   }
 }
