@@ -24,7 +24,7 @@ export default {
   name: "LoginPage",
   methods: {
     createMember() {
-
+      this.$router.push('/createMember')
     }
   }
 }
