@@ -12,8 +12,11 @@ export default {
     },
     getters: {},
     mutations: {
-        setLoginId(state, value) {
-            state.user.loginId = value
+        setLoginId(state, loginId) {
+            state.user.loginId = loginId
+        },
+        setLoginPw(state, loginPw) {
+            state.user.loginPw = loginPw
         }
     },
     actions: {
