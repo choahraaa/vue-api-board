@@ -4,13 +4,13 @@
       <tr>
         <th>아이디 :</th>
         <td>
-          <input type="text" v-model="loginIdDD">
+          <input type="text" v-model="loginId">
         </td>
       </tr>
       <tr>
         <th>비밀번호 :</th>
         <td>
-          <input type="password" v-model="this.$store.state.login.user.loginPw">
+          <input type="password" v-model="loginPw">
         </td>
       </tr>
     </table>
@@ -23,16 +23,20 @@
 export default {
   name: "LoginPage",
   computed: {
-    loginIdDD: {
+    loginId: {
       get() {
         return this.$store.state.login.user.loginId;
-      }, set(value) {
-        this.$store.commit("login/setLoginId", value);
+      }, set(loginId) {
+        this.$store.commit("login/setLoginId", loginId);
+      }
+    },
+    loginPw: {
+      get() {
+        return this.$store.state.login.user.loginPw;
+      }, set(loginPw) {
+        this.$store.commit("login/setLoginPw", loginPw);
       }
     }
-  },
-  created() {
-    console.log('state', this.$store)
   },
   methods: {
     createMember() {
