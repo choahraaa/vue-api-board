@@ -4,19 +4,19 @@
     <tr>
       <th>이름 :</th>
       <td>
-        <input type="text" v-model="this.$store.state.board.title" placeholder="이름을 입력해주세요.">
+        <input type="text" placeholder="이름을 입력해주세요.">
       </td>
     </tr>
     <tr>
       <th>아이디 :</th>
       <td>
-        <input type="text" v-model="this.$store.state.board.content" placeholder="아이디를 입력해주세요.">
+        <input type="text" placeholder="아이디를 입력해주세요.">
       </td>
     </tr>
     <tr>
       <th>비밀번호 :</th>
       <td>
-        <input type="text" v-model="this.$store.state.board.content" placeholder="비밀번호를 입력해주세요.">
+        <input type="text" v-model="this.$store.board.state.board.content" placeholder="비밀번호를 입력해주세요.">
       </td>
     </tr>
   </table>
@@ -27,7 +27,12 @@
 
 <script>
 export default {
-  name: "CreateMember"
+  name: "CreateMember",
+  methods: {
+    createCancle() {
+      this.$router.push('/');
+    }
+  }
 }
 </script>
 
