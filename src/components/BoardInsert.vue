@@ -5,13 +5,13 @@
       <tr>
         <th>제목 :</th>
         <td>
-          <input type="text" v-model="this.$store.state.board.title" placeholder="제목을 입력해주세요.">
+          <input type="text" v-model="this.$store.board.state.board.title" placeholder="제목을 입력해주세요.">
         </td>
       </tr>
       <tr>
         <th>본문 :</th>
         <td>
-          <textarea v-model="this.$store.state.board.content" placeholder="본문을 입력해주세요."></textarea>
+          <textarea v-model="this.$store.board.state.board.content" placeholder="본문을 입력해주세요."></textarea>
         </td>
       </tr>
     </table>

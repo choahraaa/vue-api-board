@@ -6,18 +6,18 @@
         <th>제목</th>
         <th>본문</th>
       </tr>
-      <tr v-for="board in this.$store.state.boardList" :key="board">
+      <tr v-for="board in this.$store.board.state.boardList" :key="board">
         <td @click="boardEdit(board.id)">
           {{ board.title }}
         </td>
         <td>{{ board.content }}</td>
       </tr>
     </table>
-    <a v-if="this.$store.state.paging.pagingStart > 1" @click="movePage(this.$store.getters.prevPaging)">이전</a>
-    <a v-for="(page, index) in this.$store.state.paging.pageSize" :key="page" @click="movePage(this.$store.state.paging.pagingStart + index)">
-      {{this.$store.state.paging.pagingStart + index}}
+    <a v-if="this.$store.board.state.paging.pagingStart > 1" @click="movePage(this.$store.getters('board/prevPaging'))">이전</a>
+    <a v-for="(page, index) in this.$store.board.state.paging.pageSize" :key="page" @click="movePage(this.$store.board.state.paging.pagingStart + index)">
+      {{this.$store.board.state.paging.pagingStart + index}}
     </a>
-    <a v-if="this.$store.state.paging.pagingStart < this.$store.state.paging.lastPaging" @click="movePage(this.$store.getters.nextPaging)">다음</a>
+    <a v-if="this.$store.board.state.paging.pagingStart < this.$store.board.state.paging.lastPaging" @click="movePage(this.$store.getters('board/nextPaging'))">다음</a>
     <br>
     <button @click="boardInsert">글쓰기</button>
     <br>
