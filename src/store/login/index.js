@@ -1,4 +1,5 @@
 import axios from "axios";
+import router from "@/router";
 
 export default {
     namespaced: true,
@@ -25,7 +26,8 @@ export default {
                 loginId: state.user.loginId,
                 loginPw: state.user.loginPw
             }).then(() => {
-
+                alert("로그인에 성공하셨습니다.")
+                router.push('/main');
             });
         }
     },
