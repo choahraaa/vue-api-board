@@ -28,6 +28,10 @@ export default {
             }).then(() => {
                 alert("로그인에 성공하셨습니다.")
                 router.push('/main');
+            }).catch((error) => {
+                alert(error.response.data.message)
+                state.user.loginId = ''
+                state.user.loginPw = ''
             });
         }
     },
